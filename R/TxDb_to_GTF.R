@@ -21,7 +21,7 @@ TxDb_to_GTF <- function() {
   Tab$gene_id <- paste("gene_id",Tab$gene_id,sep= " ")
   Tab$tx_name <- paste("transcript_id",Tab$tx_name,sep= " ")
   Tab$exon_id <- paste("exon_id",Tab$exon_id,sep= " ")
-  Tab$tx_chrom <- gsub("\\chr","",Tab$tx_chrom)
+  #Tab$tx_chrom <- gsub("\\chr","",Tab$tx_chrom)  #not necessary
   #seqname(chrom) source(TxDb) feature(transcript) start end SCORE(.) strand FRAME(.) attribute(gene_id;transcript_id)
   gtf <- data.frame(
     seqname=Tab$tx_chrom, source= c(rep("TxDb")),feature= c(rep("exon")),
