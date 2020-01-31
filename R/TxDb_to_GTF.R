@@ -2,18 +2,14 @@
 #'
 #' @import TxDb.Hsapiens.UCSC.hg38.knownGene
 #' @import GenomicFeatures
-#' @param exonsByTx A GRangesList
-#' @param exonsdf A dataframe converted from exonsByTx
-#' @param txdbTables A list of tables
-#' @param initTab A merged dataframe of the transcripts and genes tables from txdbTables
-#' @param Tab A merged datafram of initTab and exondf
-#' @param gtf A datafram compatible with the GTF format
 #' @return gtf
+#' @examples
+#' TxDb_to_GTF()
 #' @export
 
 TxDb_to_GTF <- function() {
   message("This will take a little less than four minutes.")
-  exonsByTx <- exonsBy(TxDb.Hsapiens.UCSC.hg38.knownGene, by='tx', use.names=T)
+  exonsByTx <- exonsBy(TxDb.Hsapiens.UCSC.hg38.knownGene, by='tx', use.names=TRUE)
   exonsdf <- as.data.frame(exonsByTx)
   txdbTables <- as.list(TxDb.Hsapiens.UCSC.hg38.knownGene)
   initTab <- merge(txdbTables$transcripts,txdbTables$genes,by="tx_id",all=TRUE)
@@ -23,7 +19,6 @@ TxDb_to_GTF <- function() {
   Tab$tx_name <- paste("transcript_id",Tab$tx_name,sep= " ")
   Tab$exon_id <- paste("exon_id",Tab$exon_id,sep= " ")
   #Tab$tx_chrom <- gsub("\\chr","",Tab$tx_chrom)  #not necessary
-  #seqname(chrom) source(TxDb) feature(transcript) start end SCORE(.) strand FRAME(.) attribute(gene_id;transcript_id)
   gtf <- data.frame(
     seqname=Tab$tx_chrom, source= c(rep("TxDb")),feature= c(rep("exon")),
     start=Tab$start,end=Tab$tx_end,score=c(rep(".")),strand=Tab$strand,

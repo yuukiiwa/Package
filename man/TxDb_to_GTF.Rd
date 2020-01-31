@@ -6,22 +6,12 @@
 \usage{
 TxDb_to_GTF()
 }
-\arguments{
-\item{exonsByTx}{A GRangesList}
-
-\item{exonsdf}{A dataframe converted from exonsByTx}
-
-\item{txdbTables}{A list of tables}
-
-\item{initTab}{A merged dataframe of the transcripts and genes tables from txdbTables}
-
-\item{Tab}{A merged datafram of initTab and exondf}
-
-\item{gtf}{A datafram compatible with the GTF format}
-}
 \value{
 gtf
 }
 \description{
 Convert exons from the GRangesList to a dataframe compatible with the GTF format.
+}
+\examples{
+TxDb_to_GTF()
 }
