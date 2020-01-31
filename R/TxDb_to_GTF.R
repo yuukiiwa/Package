@@ -17,6 +17,7 @@ TxDb_to_GTF <- function() {
   exonsdf <- as.data.frame(exonsByTx)
   txdbTables <- as.list(TxDb.Hsapiens.UCSC.hg38.knownGene)
   initTab <- merge(txdbTables$transcripts,txdbTables$genes,by="tx_id",all=TRUE)
+  initTab <- initTab[!duplicated(initTab$tx_name),]
   Tab <- merge(initTab,exonsdf,by.x="tx_name",by.y="group_name",all=TRUE)
   Tab$gene_id <- paste("gene_id",Tab$gene_id,sep= " ")
   Tab$tx_name <- paste("transcript_id",Tab$tx_name,sep= " ")
