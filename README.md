@@ -1,4 +1,4 @@
-#Package
+# Package
 Get into R and type the following to install Package from Github:
 ```
 devtools::install_github("yuukiiwa/Package")
