@@ -1,0 +1,18 @@
+Package: Package
+Title: TxDb Transcript To GTF
+Version: 0.1.0
+Authors@R: 
+    person(given = "YukKei",
+           family = "Wan",
+           role = c("aut", "cre"),
+           email = "yukkeiwan622@gmail.com",)
+Description: The packages converts the TxDb transcripts into GTF.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports:
+  TxDb.Hsapiens.UCSC.hg38.knownGene,
+  GenomicFeatures
+RoxygenNote: 7.0.2
+Suggests: 
+    testthat
