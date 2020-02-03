@@ -10,18 +10,8 @@
 #' @export
 
 TxDb_to_GTF <- function(GRL,txdbTables) {
-  message("This will take a little less than four minutes.")
-  if (missing(GRL)){
-    stop('A GRangesList is required.')
-  }else if (missing(txdbTables)){
-    Tab <- as.data.frame(GRL)
-    Tab$exon_rank <- paste('exon_number "',Tab$exon_rank,'";',sep= '')
-    Tab$exon_id <- paste('exon_id "',Tab$exon_id,'";',sep= '')
-    gtf <- data.frame(
-      seqname=Tab$seqnames, source= c(rep("TxDb")),feature= c(rep("exon")),
-      start=Tab$start,end=Tab$end,score=c(rep(".")),strand=Tab$strand,
-      frame=c(rep(".")), attributes= paste(Tab$exon_rank,Tab$exon_id)
-    )
+  if (missing(GRL) | missing(txdbTables)){
+    stop('GRangesList and information of transcript and gene ids are required.')
   }else{
     exonsdf <- as.data.frame(GRL)
     initTab <- merge(txdbTables$transcripts,txdbTables$genes,by="tx_id",all=TRUE)
