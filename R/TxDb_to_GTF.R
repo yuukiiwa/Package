@@ -6,7 +6,11 @@
 #' @param txdbTables a list of tables from TxDb
 #' @return gtf
 #' @examples
-#' TxDb_to_GTF()
+#' library(TxDb.Hsapiens.UCSC.hg38.knownGene)
+#' library(GenomicFeatures)
+#' exonsByTx <- exonsBy(TxDb.Hsapiens.UCSC.hg38.knownGene, by='tx', use.names=TRUE)
+#' txdbTabs <- as.list(TxDb.Hsapiens.UCSC.hg38.knownGene)
+#' TxDb_to_GTF(GRL=exonsByTx, txdbTables=txdbTabs)
 #' @export
 
 TxDb_to_GTF <- function(GRL,txdbTables) {
