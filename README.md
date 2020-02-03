@@ -9,6 +9,8 @@ library(Package)
 ```
 Generate the inputs:
 ```
+library(GenomicFeatures)
+library(TxDb.Hsapiens.UCSC.hg38.knownGene)
 exonsByTx <- exonsBy(TxDb.Hsapiens.UCSC.hg38.knownGene, by='tx', use.names=T)
 txdbTables <- as.list(TxDb.Hsapiens.UCSC.hg38.knownGene)
 ```
