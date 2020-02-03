@@ -4,7 +4,12 @@
 \alias{TxDb_to_GTF}
 \title{Convert exons from the GRangesList to a dataframe compatible with the GTF format.}
 \usage{
-TxDb_to_GTF()
+TxDb_to_GTF(GRL, txdbTables)
+}
+\arguments{
+\item{GRL}{a GRangesList obtained from TxDb}
+
+\item{txdbTables}{a list of tables from TxDb}
 }
 \value{
 gtf

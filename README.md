@@ -7,14 +7,9 @@ Load Package:
 ```
 library(Package)
 ```
-Generate the inputs:
-```
-GRL <- exonsBy(TxDb.Hsapiens.UCSC.hg38.knownGene, by='tx', use.names=TRUE)
-txdbTables <- as.list(TxDb.Hsapiens.UCSC.hg38.knownGene)
-```
 Run the GTF-dataframe-generating function:
 ```
-gtf <- TxDb_to_GTF(GRL,txdbTables)
+gtf <- TxDb_to_GTF()
 ```
 Export the the GTF dataframe into a tsv (will be located in the Package directory):
 ```
