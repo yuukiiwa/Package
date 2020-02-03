@@ -1,6 +1,16 @@
 context("TxDb_to_GTF")
 library(Package)
 test_that("TxDb_to_GTF is working", {
-  expect_message(TxDb_to_GTF(),"This will take a little less than four minutes.")
-  expect_is(TxDb_to_GTF(), "data.frame")
+  exonsByTx <- exonsBy(TxDb.Hsapiens.UCSC.hg38.knownGene, by='tx', use.names=T)
+  txdbTabs <- as.list(TxDb.Hsapiens.UCSC.hg38.knownGene)
+  expect_is(exonsByTx,"CompressedGRangesList")
+  expect_is(txdbTabs,"list")
+  expect_is(TxDb_to_GTF(GRL=exonsByTx,txdbTables= txdbTabs), "data.frame")
+  expect_error(TxDb_to_GTF())
+  expect_error(TxDb_to_GTF(GRL=exonsByTx))
+  expect_error(TxDb_to_GTF(txdbTables= txdbTabs))
+  expect_error(TxDbtoGTF(GRL=txdbTabs,txdbTables=exonsByTx))
+  expect_error(TxDbtoGTF(GRL=txdbTabs,txdbTables=txdbTabs))
+  expect_error(TxDbtoGTF(GRL=exonsByTx,txdbTables=exonsByTx))
 })
+

@@ -11,7 +11,11 @@
 
 TxDb_to_GTF <- function(GRL,txdbTables) {
   if (missing(GRL) | missing(txdbTables)){
-    stop('GRangesList and information of transcript and gene ids are required.')
+    stop('Both GRangesList and information of transcript and gene ids are required.')
+  }else if (class(GRL) != "CompressedGRangesList"){
+    stop('The inputted GRangesList is of the wrong class.')
+  }else if (class(txdbTables) != "list"){
+    stop('The inputted txdbTables is of the wrong class.') 
   }else{
     exonsdf <- as.data.frame(GRL)
     initTab <- merge(txdbTables$transcripts,txdbTables$genes,by="tx_id",all=TRUE)
