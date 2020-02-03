@@ -14,7 +14,7 @@ txdbTables <- as.list(TxDb.Hsapiens.UCSC.hg38.knownGene)
 ```
 Run the GTF-dataframe-generating function:
 ```
-gtf <- TxDb_to_GTF()
+gtf <- TxDb_to_GTF(GRL,txdbTables)
 ```
 Export the the GTF dataframe into a tsv (will be located in the Package directory):
 ```
