@@ -8,6 +8,8 @@ Sabrinas-MacBook-Pro:Downloads yukkeiwan$ R CMD build Package
 * checking for empty or unneeded directories
 * building ‘Package_0.1.0.tar.gz’
 
+Sabrinas-MacBook-Pro:Downloads yukkeiwan$ R CMD build Package_
+Package_0.1.0.tar.gz  Package_g/            
 Sabrinas-MacBook-Pro:Downloads yukkeiwan$ R CMD check Package_0.1.0.tar.gz 
 * using log directory ‘/Users/yukkeiwan/Downloads/Package.Rcheck’
 * using R version 3.6.2 (2019-12-12)
@@ -35,7 +37,10 @@ License components which are templates and need '+ file LICENSE':
 File
   LICENSE
 is not mentioned in the DESCRIPTION file.
-* checking for left-over files ... OK
+* checking for left-over files ... NOTE
+The following files look like leftovers:
+  ‘Package/TxDb_to_GTF.Rd’
+Please remove them from your package.
 * checking index information ... OK
 * checking package subdirectories ... OK
 * checking R files for non-ASCII characters ... OK
@@ -74,7 +79,7 @@ is not mentioned in the DESCRIPTION file.
 * checking PDF version of manual ... OK
 * DONE
 
-Status: 2 NOTEs
+Status: 3 NOTEs
 See
   ‘/Users/yukkeiwan/Downloads/Package.Rcheck/00check.log’
 for details.
@@ -120,6 +125,9 @@ See http://bioconductor.org/developers/how-to/biocViews/
 * Checking coding practice...
     * WARNING: Avoid class() == or class() != ; use is() or !is()
       Found in files:
+        Bioconductor_Requirements (line 121)
+        Bioconductor_Requirements (line 146)
+        Bioconductor_Requirements (line 147)
         R/TxDb_to_GTF.R (line 15)
         R/TxDb_to_GTF.R (line 17)
 * Checking parsed R code in R directory, examples, vignettes...
